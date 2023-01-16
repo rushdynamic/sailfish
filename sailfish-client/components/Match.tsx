@@ -65,12 +65,20 @@ const Match = () => {
 				className={styles.problemText}
 				ref={textRef}
 				value={problemText}
+				onCopy={(e: any) => {
+					e.preventDefault();
+					return false;
+				}}
 			/>
 			<input
 				className={styles.inputText}
 				value={inputText}
 				onChange={(e) => setInputText(e.target.value)}
 				disabled={timeLeft === 0}
+				onPaste={(e: any) => {
+					e.preventDefault();
+					return false;
+				}}
 			/>
 			{/* TODO: add styles based on state of startTimer */}
 			<div>
