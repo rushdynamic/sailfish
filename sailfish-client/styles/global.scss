@@ -1,5 +1,4 @@
-// variables
-$primary-background: #10181c;
+@import './vars.scss';
 
 main {
 	background-color: $primary-background;
@@ -11,19 +10,6 @@ main {
 
 	.primary-container {
 		height: 100%;
-		.landing-page__box {
-			height: 100%;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-
-			&-taunt {
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				align-items: center;
-			}
-		}
 	}
 
 	footer {

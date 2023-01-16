@@ -1,0 +1,26 @@
+@import '../styles/vars.scss';
+
+.matchBox {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 2em;
+
+	.problemText {
+		background-color: $secondary-background;
+		padding: 1em;
+		border: 1px solid;
+		border-radius: 15px;
+	}
+
+	.inputText {
+		width: 60%;
+		background-color: $primary-background;
+		color: white;
+		border: 1px solid white;
+		border-radius: 5px;
+		padding: 2vh;
+	}
+}

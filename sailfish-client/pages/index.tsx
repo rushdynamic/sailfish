@@ -7,12 +7,12 @@ import Match from '../components/Match';
 
 export default function Home() {
 	useEffect(() => {
-		setTimeout(() => initSocket(), 1000);
+		initSocket();
 	}, []);
 
 	const socket = useRef<Socket>();
 	const [isSocketConnected, setIsSocketConnected] = useState<boolean>(false);
-	const [isFindingMatch, setIsFindingMatch] = useState<boolean>(false);
+	const [isMatchStarted, setIsMatchStarted] = useState<boolean>(false);
 
 	const initSocket = () => {
 		socket.current = io('http://localhost:3000', { transports: ['websocket'] });
@@ -22,8 +22,8 @@ export default function Home() {
 		});
 	};
 
-	const findMatch = () => {
-		setIsFindingMatch(true);
+	const startMatch = () => {
+		setIsMatchStarted(true);
 	};
 
 	return (
@@ -35,12 +35,12 @@ export default function Home() {
 			</Head>
 			<main>
 				<div className="primary-container">
-					{isFindingMatch ? (
+					{isMatchStarted ? (
 						<Match />
 					) : (
 						<Landing
 							isSocketConnected={isSocketConnected}
-							findMatch={findMatch}
+							startMatch={startMatch}
 						/>
 					)}
 				</div>

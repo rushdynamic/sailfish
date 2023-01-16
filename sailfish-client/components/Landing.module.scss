@@ -1,0 +1,13 @@
+.landingPageBox {
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	&Taunt {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+}
