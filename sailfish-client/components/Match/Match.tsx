@@ -1,27 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useCountdown } from '../hooks/useCountdown';
+import { useCountdown } from '../../hooks/useCountdown';
+import { matchConstants } from '../../constants';
+import Result, { ResultProps } from './Result';
 import styles from './Match.module.scss';
-
-type ResultProps = {
-	correctWords: number | undefined;
-	accuracy: number | undefined;
-};
-const Result: React.FC<ResultProps> = ({ correctWords, accuracy }) => {
-	if (correctWords)
-		return (
-			<>
-				<div>
-					<span>WPM: </span>
-					<span>{correctWords * 6}</span>
-				</div>
-				<div>
-					<span>Accuracy: </span>
-					<span>{Math.ceil(accuracy || 0)}%</span>
-				</div>
-			</>
-		);
-	else return <div />;
-};
 
 const Match = () => {
 	const textRef = useRef<any>(null);
@@ -29,7 +10,7 @@ const Match = () => {
 	const [inputText, setInputText] = useState<string>('');
 	const [startTimer, setStartTimer] = useState<Boolean>(false);
 	const [result, setResult] = useState<ResultProps>();
-	const timeLeft = useCountdown(startTimer, 10);
+	const timeLeft = useCountdown(startTimer, matchConstants.MATCH_DURATION);
 	const originalWords = problemText.split(' ');
 
 	useEffect(() => {

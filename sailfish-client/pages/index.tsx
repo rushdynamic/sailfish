@@ -3,7 +3,8 @@ import { useEffect, useRef, useState } from 'react';
 import { io, Socket } from 'socket.io-client';
 import { Text } from '@nextui-org/react';
 import Landing from '../components/Landing';
-import Match from '../components/Match';
+import Match from '../components/Match/Match';
+import { connectionConstants } from '../constants';
 
 export default function Home() {
 	useEffect(() => {
@@ -15,7 +16,9 @@ export default function Home() {
 	const [isMatchStarted, setIsMatchStarted] = useState<boolean>(false);
 
 	const initSocket = () => {
-		socket.current = io('http://localhost:3000', { transports: ['websocket'] });
+		socket.current = io(connectionConstants.CONNECTION_URI, {
+			transports: ['websocket'],
+		});
 		socket.current.on('connect', () => {
 			console.log('Connected to server');
 			setIsSocketConnected(true);
