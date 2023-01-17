@@ -3,5 +3,5 @@ export const connectionConstants = {
 };
 
 export const matchConstants = {
-	MATCH_DURATION: 10,
+	MATCH_DURATION: 30,
 };

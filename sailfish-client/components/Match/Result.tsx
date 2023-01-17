@@ -1,3 +1,5 @@
+import { matchConstants } from '../../constants';
+
 export type ResultProps = {
 	correctWords: number | undefined;
 	accuracy: number | undefined;
@@ -9,7 +11,7 @@ const Result: React.FC<ResultProps> = ({ correctWords, accuracy }) => {
 			<>
 				<div>
 					<span>WPM: </span>
-					<span>{correctWords * 6}</span>
+					<span>{correctWords * (60 / matchConstants.MATCH_DURATION)}</span>
 				</div>
 				<div>
 					<span>Accuracy: </span>
