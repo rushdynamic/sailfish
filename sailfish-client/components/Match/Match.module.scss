@@ -8,19 +8,50 @@
 	align-items: center;
 	gap: 2em;
 
+	.container {
+		.backdrop {
+			position: absolute;
+			z-index: 3;
+			border: 2px solid #685972;
+			background-color: transparent;
+			overflow: auto;
+			pointer-events: none;
+			transition: transform 1s;
+		}
+
+		.problemText {
+			background-color: transparent;
+			border: 2px solid transparent;
+			position: absolute;
+			z-index: 2;
+			resize: none;
+		}
+	}
+
+	.container,
+	.backdrop,
 	.problemText {
-		background-color: $secondary-background;
-		padding: 1em;
-		border: 1px solid;
+		width: 700px;
+		height: 400px;
 		border-radius: 15px;
+		line-height: 1.8em;
+		padding: 1em;
+		font-family: 'JetBrains Mono', monospace;
 	}
 
 	.inputText {
+		margin-top: 10px;
 		width: 60%;
 		background-color: $primary-background;
 		color: white;
 		border: 1px solid white;
 		border-radius: 5px;
 		padding: 2vh;
+	}
+
+	mark {
+		border-radius: 3px;
+		color: orange;
+		background-color: transparent;
 	}
 }
