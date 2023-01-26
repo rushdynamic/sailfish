@@ -1,0 +1,14 @@
+version: '3.9'
+services:
+  sf-client:
+    build: ./sailfish-client/
+    ports:
+      - '3001:3001'
+    volumes:
+      - ./sailfish-client/:/code
+  sf-server:
+    build: ./sailfish-server/
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./sailfish-server/:/code
