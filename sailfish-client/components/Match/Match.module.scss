@@ -12,7 +12,7 @@
 		.backdrop {
 			position: absolute;
 			z-index: 3;
-			border: 2px solid #685972;
+			border: 2px solid white;
 			background-color: transparent;
 			overflow: auto;
 			pointer-events: none;
@@ -20,7 +20,7 @@
 		}
 
 		.problemText {
-			background-color: transparent;
+			background-color: #685972;
 			border: 2px solid transparent;
 			position: absolute;
 			z-index: 2;
@@ -33,10 +33,14 @@
 	.problemText {
 		width: 700px;
 		height: 400px;
+	}
+
+	.backdrop,
+	.problemText {
+		font-family: 'JetBrains Mono', monospace;
 		border-radius: 15px;
 		line-height: 1.8em;
-		padding: 1em;
-		font-family: 'JetBrains Mono', monospace;
+		padding: 1.5em;
 	}
 
 	.inputText {

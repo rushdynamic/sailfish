@@ -61,6 +61,7 @@ const Match = () => {
 
 	return (
 		<div className={styles.matchBox}>
+			<Result accuracy={result?.accuracy} correctWords={result?.correctWords} />
 			<div className={styles.container}>
 				<div className={styles.backdrop}>
 					<span className={styles.highlights} ref={hlRef} />
@@ -87,6 +88,7 @@ const Match = () => {
 					e.preventDefault();
 					return false;
 				}}
+				autoFocus
 			/>
 			{/* TODO: add styles based on state of startTimer */}
 			<div>
@@ -95,7 +97,6 @@ const Match = () => {
 					{timeLeft} {timeLeft == 1 ? 'second' : 'seconds'}
 				</span>
 			</div>
-			<Result accuracy={result?.accuracy} correctWords={result?.correctWords} />
 		</div>
 	);
 };
