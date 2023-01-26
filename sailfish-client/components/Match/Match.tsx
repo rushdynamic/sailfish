@@ -4,11 +4,11 @@ import { matchConstants } from '../../constants';
 import Result, { ResultProps } from './Result';
 import styles from './Match.module.scss';
 
-const highlightWord = (text: string, index: number) => {
-	const textArr = text.split(' ');
-	const originalWord = textArr[index];
-	const before = textArr.slice(0, index);
-	const after = textArr.slice(index + 1, textArr.length - 1);
+const highlightWord = (problemText: string, index: number) => {
+	const problemTextArr = problemText.split(' ');
+	const originalWord = problemTextArr[index];
+	const before = problemTextArr.slice(0, index);
+	const after = problemTextArr.slice(index + 1, problemTextArr.length - 1);
 	return (
 		before.join(' ') +
 		' ' +
@@ -34,7 +34,7 @@ const Match = () => {
 			setStartTimer(true);
 		}
 		const curIndex = inputText.split(' ').length - 1;
-		setHlText(highlightWord(problemText, curIndex));
+		if (startTimer) setHlText(highlightWord(problemText, curIndex));
 	}, [inputText]);
 
 	useEffect(() => {
@@ -94,15 +94,18 @@ const Match = () => {
 							e.preventDefault();
 							return false;
 						}}
+						placeholder="Start typing..."
 						autoFocus
 					/>
 					{/* TODO: add styles based on state of startTimer */}
-					<div>
-						<span>Time remaining: </span>
-						<span>
-							{timeLeft} {timeLeft == 1 ? 'second' : 'seconds'}
-						</span>
-					</div>
+					{inputText && (
+						<div>
+							<span>Time remaining: </span>
+							<span>
+								{timeLeft} {timeLeft == 1 ? 'second' : 'seconds'}
+							</span>
+						</div>
+					)}
 				</>
 			)}
 		</div>
