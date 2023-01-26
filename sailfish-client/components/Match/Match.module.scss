@@ -12,7 +12,7 @@
 		.backdrop {
 			position: absolute;
 			z-index: 3;
-			border: 2px solid white;
+			border: 2px solid #b6eada;
 			background-color: transparent;
 			overflow: auto;
 			pointer-events: none;
@@ -20,7 +20,7 @@
 		}
 
 		.problemText {
-			background-color: #685972;
+			background-color: #1d252c;
 			border: 2px solid transparent;
 			position: absolute;
 			z-index: 2;
@@ -38,6 +38,7 @@
 	.backdrop,
 	.problemText {
 		font-family: 'JetBrains Mono', monospace;
+		font-size: 1.1rem;
 		border-radius: 15px;
 		line-height: 1.8em;
 		padding: 1.5em;
@@ -48,14 +49,14 @@
 		width: 60%;
 		background-color: $primary-background;
 		color: white;
-		border: 1px solid white;
-		border-radius: 5px;
+		border: none;
+		border-bottom: 1px solid #b6eada;
 		padding: 2vh;
 	}
 
 	mark {
 		border-radius: 3px;
-		color: orange;
+		color: #03c988;
 		background-color: transparent;
 	}
 }
