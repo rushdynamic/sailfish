@@ -2,11 +2,12 @@ const defaultPrimaryColor = '#b6eada';
 const defaultSecondaryColor = '#fefefe';
 
 type KeyButtonProps = {
-	onClick: () => void;
+	onClick?: () => void;
 	children?: React.ReactNode;
 	disabled?: boolean;
 	primaryColor?: string;
 	secondaryColor?: string;
+	type?: 'primary' | 'secondary';
 };
 const KeyButton = ({
 	onClick,
@@ -14,12 +15,18 @@ const KeyButton = ({
 	disabled,
 	primaryColor = defaultPrimaryColor,
 	secondaryColor = defaultSecondaryColor,
+	type = 'primary',
 }: KeyButtonProps) => {
 	return (
 		<button
 			className={`border-solid border-2 px-4 py-2 border-[${primaryColor}] 
             hover:bg-[${secondaryColor}] hover:text-gray-600 
-            font-mono shadow-harsh-primary font-semibold`}
+            font-mono font-semibold
+            ${
+							type === 'primary'
+								? 'shadow-harsh-primary'
+								: 'shadow-harsh-secondary'
+						}`}
 			onClick={onClick}
 			disabled={disabled}
 		>

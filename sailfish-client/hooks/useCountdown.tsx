@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 const useCountdown = (start: Boolean, timeInSeconds: number) => {
-	const [timeLeft, setTimeLeft] = useState(timeInSeconds);
+	const [timeLeft, setTimeLeft] = useState<number>(timeInSeconds);
 	const [timerInterval, setTimerInterval] = useState<
 		NodeJS.Timer | undefined
 	>();
@@ -20,7 +20,7 @@ const useCountdown = (start: Boolean, timeInSeconds: number) => {
 		}
 	}, [timeLeft]);
 
-	return timeLeft;
+	return { timeLeft, setTimeLeft };
 };
 
 export { useCountdown };

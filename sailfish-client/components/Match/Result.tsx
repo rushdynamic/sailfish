@@ -1,4 +1,5 @@
 import { matchConstants } from '../../constants';
+import KeyButton from '../KeyButton';
 
 type ResultItemProps = {
 	fieldName: string;
@@ -16,21 +17,27 @@ const ResultItem = ({ fieldName, fieldValue }: ResultItemProps) => {
 export type ResultProps = {
 	correctWords: number | undefined;
 	accuracy: number | undefined;
+	reset?: () => void;
 };
-const Result = ({ correctWords, accuracy }: ResultProps) => {
+const Result = ({ correctWords, accuracy, reset }: ResultProps) => {
 	return (
-		<div className="flex justify-between border border-orange-400 rounded-md p-5 w-56">
-			<ResultItem
-				fieldName="WPM"
-				fieldValue={
-					(correctWords || 0) * (60 / matchConstants.MATCH_DURATION) + ''
-				}
-			/>
-			<ResultItem
-				fieldName="Accuracy"
-				fieldValue={Math.ceil(accuracy || 0) + '%'}
-			/>
-		</div>
+		<>
+			<div className="flex justify-between border border-orange- rounded-md p-5 w-56">
+				<ResultItem
+					fieldName="WPM"
+					fieldValue={
+						(correctWords || 0) * (60 / matchConstants.MATCH_DURATION) + ''
+					}
+				/>
+				<ResultItem
+					fieldName="Accuracy"
+					fieldValue={Math.ceil(accuracy || 0) + '%'}
+				/>
+			</div>
+			<KeyButton onClick={reset} type="secondary">
+				Play again
+			</KeyButton>
+		</>
 	);
 };
 

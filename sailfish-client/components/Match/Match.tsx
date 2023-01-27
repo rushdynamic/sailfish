@@ -26,8 +26,19 @@ const Match = () => {
 	const [inputText, setInputText] = useState<string>('');
 	const [startTimer, setStartTimer] = useState<Boolean>(false);
 	const [result, setResult] = useState<ResultProps>();
-	const timeLeft = useCountdown(startTimer, matchConstants.MATCH_DURATION);
+	const { timeLeft, setTimeLeft } = useCountdown(
+		startTimer,
+		matchConstants.MATCH_DURATION
+	);
 	const originalWords = problemText.split(' ');
+
+	const resetMatch = () => {
+		setHlText(problemText);
+		setStartTimer(false);
+		setTimeLeft(matchConstants.MATCH_DURATION);
+		setResult(undefined);
+		setInputText('');
+	};
 
 	useEffect(() => {
 		if (inputText && !startTimer) {
@@ -65,6 +76,7 @@ const Match = () => {
 				<Result
 					accuracy={result?.accuracy}
 					correctWords={result?.correctWords}
+					reset={resetMatch}
 				/>
 			) : (
 				<>

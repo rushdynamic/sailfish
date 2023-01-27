@@ -9,7 +9,7 @@ module.exports = {
 			},
 			boxShadow: {
 				'harsh-primary': '5px 5px #03C988',
-				'harsh-secondary': '5px 5px orange',
+				'harsh-secondary': '5px 5px rgb(251,146,60)',
 			},
 		},
 	},
