@@ -1,24 +1,19 @@
 import React from 'react';
-import { Button, Text } from '@nextui-org/react';
-import styles from './Landing.module.scss';
+import KeyButton from './KeyButton';
 
 interface LandingBoxProps {
 	isSocketConnected: boolean;
 	startMatch: () => void;
 }
 const Landing = ({ isSocketConnected, startMatch }: LandingBoxProps) => (
-	<div className={styles.landingPageBox}>
-		<div className={styles.landingPageBoxTaunt}>
-			<Text h1 size={70} color="white">
+	<div className="h-full flex justify-center items-center">
+		<div className="flex flex-col items-center justify-center gap-10">
+			<h1 className="font-sans text-5xl tracking-tight font-semibold">
 				How fast can you type?
-			</Text>
-			<Button
-				disabled={!isSocketConnected}
-				color="gradient"
-				onClick={startMatch}
-			>
-				{isSocketConnected ? 'Start typing' : 'Hold your horses'}
-			</Button>
+			</h1>
+			<KeyButton disabled={!isSocketConnected} onClick={startMatch}>
+				{isSocketConnected ? 'Start' : 'Hold your horses'}
+			</KeyButton>
 		</div>
 	</div>
 );

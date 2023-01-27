@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import { useEffect, useRef, useState } from 'react';
 import { io, Socket } from 'socket.io-client';
-import { Text } from '@nextui-org/react';
 import Landing from '../components/Landing';
 import Match from '../components/Match/Match';
 import { connectionConstants } from '../constants';
@@ -48,11 +47,11 @@ export default function Home() {
 					)}
 				</div>
 				<footer>
-					<Text size="$xs" color="white" className="footer-text">
+					<p className="footer-text">
 						{isSocketConnected
 							? 'Connected to server'
 							: 'Waiting for connection...'}
-					</Text>
+					</p>
 				</footer>
 			</main>
 		</>

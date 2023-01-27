@@ -98,7 +98,7 @@ const Match = () => {
 						autoFocus
 					/>
 					{/* TODO: add styles based on state of startTimer */}
-					{inputText && (
+					{(inputText || startTimer) && (
 						<div>
 							<span>Time remaining: </span>
 							<span>

@@ -42,6 +42,10 @@
 		border-radius: 15px;
 		line-height: 1.8em;
 		padding: 1.5em 1.8em;
+
+		&:focus {
+			outline: none;
+		}
 	}
 
 	.inputText {
@@ -52,6 +56,10 @@
 		border: none;
 		border-bottom: 1px solid #b6eada;
 		padding: 2vh;
+
+		&:focus {
+			outline: none;
+		}
 	}
 
 	mark {
