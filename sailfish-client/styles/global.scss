@@ -1,28 +1,5 @@
 @import './vars.scss';
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;800&family=JetBrains+Mono:wght@400;500&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-main {
-	background-color: $primary-background;
-	color: white;
-	display: flex;
-	height: 100%;
-	flex-direction: column;
-	overflow-y: hidden;
-
-	.primary-container {
-		height: 100%;
-	}
-
-	footer {
-		width: 100%;
-		display: flex;
-		justify-content: flex-end;
-
-		.footer-text {
-			padding: 1em;
-		}
-	}
-}

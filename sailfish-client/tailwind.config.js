@@ -3,6 +3,11 @@ module.exports = {
 	content: ['./pages/**/*.{js,ts,tsx}', './components/**/*.{js,ts,tsx}'],
 	theme: {
 		extend: {
+			colors: {
+				'primary-dark-bg': '#10181c',
+				'secondary-dark-bg': '#34444c',
+				'primary-dark-text': '#fefefe',
+			},
 			fontFamily: {
 				sans: ['Inter', 'sans-serif'],
 				mono: ['JetBrains Mono', 'monospace'],

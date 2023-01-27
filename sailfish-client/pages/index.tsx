@@ -35,8 +35,8 @@ export default function Home() {
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<main>
-				<div className="primary-container">
+			<main className="bg-primary-dark-bg text-primary-dark-text flex flex-col h-full overflow-y-hidden">
+				<div className="h-full">
 					{isMatchStarted ? (
 						<Match />
 					) : (
@@ -46,8 +46,8 @@ export default function Home() {
 						/>
 					)}
 				</div>
-				<footer>
-					<p className="footer-text">
+				<footer className="w-full flex justify-end">
+					<p className="p-4 text-xs">
 						{isSocketConnected
 							? 'Connected to server'
 							: 'Waiting for connection...'}

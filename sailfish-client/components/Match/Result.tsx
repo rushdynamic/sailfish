@@ -34,7 +34,12 @@ const Result = ({ correctWords, accuracy, reset }: ResultProps) => {
 					fieldValue={Math.ceil(accuracy || 0) + '%'}
 				/>
 			</div>
-			<KeyButton onClick={reset} type="secondary">
+			<KeyButton
+				alt="reset-button"
+				onClick={reset}
+				type="secondary"
+				icon="reload"
+			>
 				Play again
 			</KeyButton>
 		</>
