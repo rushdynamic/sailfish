@@ -2,7 +2,6 @@ import Image from 'next/image';
 import { useState } from 'react';
 
 const defaultPrimaryColor = '#b6eada';
-const defaultSecondaryColor = '#fefefe';
 
 const getIconPath = (key: string, isHover: boolean) =>
 	'/icons/' + key + (isHover ? '-dark' : '-lite') + '.svg';
@@ -22,7 +21,6 @@ const KeyButton = ({
 	onClick,
 	children,
 	primaryColor = defaultPrimaryColor,
-	secondaryColor = defaultSecondaryColor,
 	type = 'primary',
 	icon,
 }: KeyButtonProps) => {
@@ -32,9 +30,7 @@ const KeyButton = ({
 			className={
 				'border-solid border-2 px-4 py-2 border-[' +
 				primaryColor +
-				'] hover:bg-[' +
-				secondaryColor +
-				'] hover:text-gray-600 font-mono font-semibold cursor-pointer flex gap-4 items-center justify-center ' +
+				'] hover:bg-[#fefefe] hover:text-gray-600 font-mono font-semibold cursor-pointer flex gap-4 items-center justify-center ' +
 				(type === 'primary' ? 'shadow-harsh-primary' : 'shadow-harsh-secondary')
 			}
 			onClick={onClick}
