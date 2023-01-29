@@ -11,6 +11,7 @@ module.exports = {
 			fontFamily: {
 				sans: ['Inter', 'sans-serif'],
 				mono: ['JetBrains Mono', 'monospace'],
+				accent: ['Big Shoulders Display', 'cursive'],
 			},
 			boxShadow: {
 				'harsh-primary': '5px 5px #03C988',

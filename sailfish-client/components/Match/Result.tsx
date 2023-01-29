@@ -9,7 +9,7 @@ const ResultItem = ({ fieldName, fieldValue }: ResultItemProps) => {
 	return (
 		<div className="flex flex-col gap-2 items-center">
 			<span className="text-2xl text-orange-400">{fieldName}</span>
-			<span className="text-gray-300">{fieldValue}</span>
+			<span className="text-7xl text-gray-300 font-accent">{fieldValue}</span>
 		</div>
 	);
 };
@@ -22,7 +22,7 @@ export type ResultProps = {
 const Result = ({ correctWords, accuracy, reset }: ResultProps) => {
 	return (
 		<>
-			<div className="flex justify-between border border-orange- rounded-md p-5 w-56">
+			<div className="flex gap-5 justify-between border border-orange-400 rounded-md p-5 w-56">
 				<ResultItem
 					fieldName="WPM"
 					fieldValue={

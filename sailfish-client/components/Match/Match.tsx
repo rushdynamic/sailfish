@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useCountdown } from '../../hooks/useCountdown';
 import { matchConstants } from '../../constants';
+import BottomBar from './BottomBar';
 import Result, { ResultProps } from './Result';
 import styles from './Match.module.scss';
 
@@ -111,12 +112,7 @@ const Match = () => {
 					/>
 					{/* TODO: add styles based on state of startTimer */}
 					{(inputText || startTimer) && (
-						<div>
-							<span>Time remaining: </span>
-							<span>
-								{timeLeft} {timeLeft == 1 ? 'second' : 'seconds'}
-							</span>
-						</div>
+						<BottomBar timeLeft={timeLeft} reset={resetMatch} />
 					)}
 				</>
 			)}

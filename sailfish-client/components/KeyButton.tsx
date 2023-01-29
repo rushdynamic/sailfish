@@ -29,9 +29,14 @@ const KeyButton = ({
 	const [isHover, setIsHover] = useState<boolean>(false);
 	return (
 		<div
-			className={`border-solid border-2 px-4 py-2 border-[${primaryColor}] hover:bg-[${secondaryColor}] hover:text-gray-600 font-mono font-semibold cursor-pointer flex gap-4 items-center justify-center ${
-				type === 'primary' ? 'shadow-harsh-primary' : 'shadow-harsh-secondary'
-			}`}
+			className={
+				'border-solid border-2 px-4 py-2 border-[' +
+				primaryColor +
+				'] hover:bg-[' +
+				secondaryColor +
+				'] hover:text-gray-600 font-mono font-semibold cursor-pointer flex gap-4 items-center justify-center ' +
+				(type === 'primary' ? 'shadow-harsh-primary' : 'shadow-harsh-secondary')
+			}
 			onClick={onClick}
 			onMouseEnter={() => setIsHover(true)}
 			onMouseLeave={() => setIsHover(false)}
