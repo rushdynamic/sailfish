@@ -26,13 +26,8 @@ const Landing = ({ isSocketConnected, startMatch }: LandingBoxProps) => (
 					ease: [0, 0.71, 0.2, 1.01],
 				}}
 			>
-				<KeyButton
-					alt="start-button"
-					disabled={!isSocketConnected}
-					onClick={startMatch}
-					icon="start"
-				>
-					{isSocketConnected ? 'Start' : 'Hold your horses'}
+				<KeyButton alt="start-button" onClick={startMatch} icon="start">
+					Start
 				</KeyButton>
 			</motion.div>
 		</div>

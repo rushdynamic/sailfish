@@ -10,7 +10,6 @@ type KeyButtonProps = {
 	alt: string;
 	onClick?: () => void;
 	children?: React.ReactNode;
-	disabled?: boolean;
 	primaryColor?: string;
 	secondaryColor?: string;
 	type?: 'primary' | 'secondary';
