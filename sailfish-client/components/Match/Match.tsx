@@ -6,6 +6,7 @@ import Result, { ResultProps } from './Result';
 import styles from './Match.module.scss';
 
 const highlightWord = (problemText: string, index: number) => {
+	//TODO: correct/incorrect highlight distinction
 	const problemTextArr = problemText.split(' ');
 	const originalWord = problemTextArr[index];
 	const before = problemTextArr.slice(0, index);
@@ -19,10 +20,9 @@ const highlightWord = (problemText: string, index: number) => {
 	);
 };
 
-const Match = () => {
+const Match = ({ problemText }: { problemText: string }) => {
 	const problemRef = useRef<any>(null);
 	const hlRef = useRef<any>(null);
-	const problemText = `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`;
 	const [hlText, setHlText] = useState<string>(problemText);
 	const [inputText, setInputText] = useState<string>('');
 	const [startTimer, setStartTimer] = useState<Boolean>(false);

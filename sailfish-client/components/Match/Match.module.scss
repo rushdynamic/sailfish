@@ -42,7 +42,7 @@
 		border-radius: 15px;
 		line-height: 1.8em;
 		padding: 1.5em 1.8em;
-
+		overflow-y: scroll;
 		&:focus {
 			outline: none;
 		}

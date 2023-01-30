@@ -13,6 +13,9 @@ module.exports = {
 				mono: ['JetBrains Mono', 'monospace'],
 				accent: ['Big Shoulders Display', 'cursive'],
 			},
+			fontSize: {
+				xxs: '0.55rem',
+			},
 			boxShadow: {
 				'harsh-primary': '5px 5px #03C988',
 				'harsh-secondary': '5px 5px rgb(251,146,60)',
