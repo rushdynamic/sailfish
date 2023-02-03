@@ -22,11 +22,13 @@ const highlightWord = (problemText: string, index: number) => {
 
 const Match = ({ problemText }: { problemText: string }) => {
 	const problemRef = useRef<any>(null);
+	const backdropRef = useRef<any>(null);
 	const hlRef = useRef<any>(null);
 	const [hlText, setHlText] = useState<string>(problemText);
 	const [inputText, setInputText] = useState<string>('');
 	const [startTimer, setStartTimer] = useState<Boolean>(false);
 	const [result, setResult] = useState<ResultProps>();
+	const [lastScrollIndex, setLastScrollIndex] = useState<number>(0);
 	const { timeLeft, setTimeLeft } = useCountdown(
 		startTimer,
 		matchConstants.MATCH_DURATION
@@ -41,12 +43,29 @@ const Match = ({ problemText }: { problemText: string }) => {
 		setInputText('');
 	};
 
+	const handleScrollProblemText = (scroll: any) => {
+		backdropRef.current.scrollTop = scroll.target.scrollTop;
+	};
+
+	const handleScrollHighlights = (scroll: any) => {
+		problemRef.current.scrollTop = scroll.target.scrollTop;
+	};
+
 	useEffect(() => {
 		if (inputText && !startTimer) {
 			setStartTimer(true);
 		}
 		const curIndex = inputText.split(' ').length - 1;
 		if (startTimer) setHlText(highlightWord(problemText, curIndex));
+		if (
+			problemRef?.current &&
+			curIndex != 0 &&
+			curIndex % 30 == 0 &&
+			lastScrollIndex != curIndex
+		) {
+			problemRef.current.scrollTop += 30;
+			setLastScrollIndex(curIndex);
+		}
 	}, [inputText]);
 
 	useEffect(() => {
@@ -82,9 +101,6 @@ const Match = ({ problemText }: { problemText: string }) => {
 			) : (
 				<>
 					<div className={styles.container}>
-						<div className={styles.backdrop}>
-							<span className={styles.highlights} ref={hlRef} />
-						</div>
 						<textarea
 							readOnly
 							rows={5}
@@ -96,7 +112,15 @@ const Match = ({ problemText }: { problemText: string }) => {
 								e.preventDefault();
 								return false;
 							}}
+							onScroll={handleScrollProblemText}
 						/>
+						<div
+							className={styles.backdrop}
+							ref={backdropRef}
+							onScroll={handleScrollHighlights}
+						>
+							<span className={styles.highlights} ref={hlRef} />
+						</div>
 					</div>
 					<input
 						className={styles.inputText}
@@ -110,7 +134,6 @@ const Match = ({ problemText }: { problemText: string }) => {
 						placeholder="Start typing..."
 						autoFocus
 					/>
-					{/* TODO: add styles based on state of startTimer */}
 					{(inputText || startTimer) && (
 						<BottomBar timeLeft={timeLeft} reset={resetMatch} />
 					)}

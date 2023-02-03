@@ -11,10 +11,9 @@
 	.container {
 		.backdrop {
 			position: absolute;
-			z-index: 3;
 			border: 2px solid #b6eada;
 			background-color: transparent;
-			overflow: auto;
+			overflow: hidden;
 			pointer-events: none;
 			transition: transform 1s;
 		}
@@ -23,8 +22,8 @@
 			background-color: #1d252c;
 			border: 2px solid transparent;
 			position: absolute;
-			z-index: 2;
 			resize: none;
+			overflow: hidden;
 		}
 	}
 
@@ -42,7 +41,6 @@
 		border-radius: 15px;
 		line-height: 1.8em;
 		padding: 1.5em 1.8em;
-		overflow-y: scroll;
 		&:focus {
 			outline: none;
 		}
