@@ -1,12 +1,12 @@
 import React from 'react';
 import KeyButton from './KeyButton';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 interface LandingBoxProps {
-	isSocketConnected: boolean;
 	startMatch: () => void;
 }
-const Landing = ({ isSocketConnected, startMatch }: LandingBoxProps) => (
+const Landing = ({ startMatch }: LandingBoxProps) => (
 	<div className="h-full flex justify-center items-center">
 		<div className="flex flex-col items-center justify-center gap-10">
 			<motion.h1
@@ -26,9 +26,11 @@ const Landing = ({ isSocketConnected, startMatch }: LandingBoxProps) => (
 					ease: [0, 0.71, 0.2, 1.01],
 				}}
 			>
-				<KeyButton alt="start-button" onClick={startMatch} icon="start">
-					Start
-				</KeyButton>
+				<Link href="/match">
+					<KeyButton alt="start-button" onClick={startMatch} icon="start">
+						Start
+					</KeyButton>
+				</Link>
 			</motion.div>
 		</div>
 	</div>
