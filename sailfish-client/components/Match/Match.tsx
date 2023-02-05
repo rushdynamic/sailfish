@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import { useCountdown } from '../../hooks/useCountdown';
 import { matchConstants } from '../../constants';
+import Loading from '../Loading';
 import BottomBar from './BottomBar';
 import Result, { ResultProps } from './Result';
 import styles from './Match.module.scss';
@@ -21,6 +23,8 @@ const highlightWord = (problemText: string, index: number) => {
 };
 
 const Match = ({ problemText }: { problemText: string }) => {
+	const router = useRouter();
+	const [reloading, setReloading] = useState<boolean>(false);
 	const problemRef = useRef<any>(null);
 	const backdropRef = useRef<any>(null);
 	const hlRef = useRef<any>(null);
@@ -36,11 +40,14 @@ const Match = ({ problemText }: { problemText: string }) => {
 	const originalWords = problemText.split(' ');
 
 	const resetMatch = () => {
-		setHlText(problemText);
-		setStartTimer(false);
-		setTimeLeft(matchConstants.MATCH_DURATION);
-		setResult(undefined);
-		setInputText('');
+		setReloading(true);
+		router.reload();
+
+		// setHlText(problemText);
+		// setStartTimer(false);
+		// setTimeLeft(matchConstants.MATCH_DURATION);
+		// setResult(undefined);
+		// setInputText('');
 	};
 
 	const handleScrollProblemText = (scroll: any) => {
@@ -50,6 +57,10 @@ const Match = ({ problemText }: { problemText: string }) => {
 	const handleScrollHighlights = (scroll: any) => {
 		problemRef.current.scrollTop = scroll.target.scrollTop;
 	};
+
+	useEffect(() => {
+		if (problemText) setReloading(false);
+	}, [problemText]);
 
 	useEffect(() => {
 		if (inputText && !startTimer) {
@@ -90,7 +101,9 @@ const Match = ({ problemText }: { problemText: string }) => {
 		if (hlRef.current) hlRef.current.innerHTML = hlText;
 	}, [hlText]);
 
-	return (
+	return reloading ? (
+		<Loading />
+	) : (
 		<div className={styles.matchBox}>
 			{timeLeft === 0 ? (
 				<Result

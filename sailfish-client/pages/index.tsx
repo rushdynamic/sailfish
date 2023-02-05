@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { useState } from 'react';
 import Landing from '../components/Landing';
 
-export default function Home(data: any) {
+export default function Home() {
 	const [isMatchStarted, setIsMatchStarted] = useState<boolean>(false);
 
 	const startMatch = () => setIsMatchStarted(true);
