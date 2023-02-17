@@ -28,6 +28,7 @@ const Match = ({ problemText }: { problemText: string }) => {
 	const problemRef = useRef<any>(null);
 	const backdropRef = useRef<any>(null);
 	const hlRef = useRef<any>(null);
+	const inputRef = useRef<any>(null);
 	const [hlText, setHlText] = useState<string>(problemText);
 	const [inputText, setInputText] = useState<string>('');
 	const [startTimer, setStartTimer] = useState<Boolean>(false);
@@ -101,6 +102,13 @@ const Match = ({ problemText }: { problemText: string }) => {
 		if (hlRef.current) hlRef.current.innerHTML = hlText;
 	}, [hlText]);
 
+	// Autofocus input text field
+	useEffect(() => {
+		if (inputRef.current) {
+			inputRef.current.focus();
+		}
+	}, []);
+
 	return reloading ? (
 		<Loading />
 	) : (
@@ -136,6 +144,7 @@ const Match = ({ problemText }: { problemText: string }) => {
 						</div>
 					</div>
 					<input
+						ref={inputRef}
 						className={styles.inputText}
 						value={inputText}
 						onChange={(e) => setInputText(e.target.value)}
@@ -145,7 +154,6 @@ const Match = ({ problemText }: { problemText: string }) => {
 							return false;
 						}}
 						placeholder="Start typing..."
-						autoFocus
 					/>
 					{(inputText || startTimer) && (
 						<BottomBar timeLeft={timeLeft} reset={resetMatch} />
