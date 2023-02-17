@@ -59,16 +59,22 @@ const Match = ({ problemText }: { problemText: string }) => {
 		problemRef.current.scrollTop = scroll.target.scrollTop;
 	};
 
+	// When problem text has fully loaded, we stop showing the loading screen
 	useEffect(() => {
 		if (problemText) setReloading(false);
 	}, [problemText]);
 
 	useEffect(() => {
+		// If user has started typing and timer has not started yet, start the timer
 		if (inputText && !startTimer) {
 			setStartTimer(true);
 		}
+
+		// Highlight current word
 		const curIndex = inputText.split(' ').length - 1;
 		if (startTimer) setHlText(highlightWord(problemText, curIndex));
+
+		// Auto-scroll problem text
 		if (
 			problemRef?.current &&
 			curIndex != 0 &&
@@ -80,6 +86,7 @@ const Match = ({ problemText }: { problemText: string }) => {
 		}
 	}, [inputText]);
 
+	// End of match
 	useEffect(() => {
 		if (timeLeft === 0) {
 			setStartTimer(false);
